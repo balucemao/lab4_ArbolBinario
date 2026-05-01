@@ -79,3 +79,16 @@ treemap.c:24:5: note: declared here
    24 | int is_equal(TreeMap* tree, void* key1, void* key2){
       |     ^~~~~~~~
 4d927e3
+Fri May  1 11:01:44 PM UTC 2026: 
+ treemap.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘searchTreeMap’:
+treemap.c:61:24: error: ‘TreeNode’ has no member named ‘key’
+   61 |     while(tree->current->key != NULL){
+      |                        ^~
+treemap.c:62:46: error: ‘TreeNode’ has no member named ‘key’
+   62 |         if (is_equal(tree, key, tree->current->key)){
+      |                                              ^~
+83e9c63
