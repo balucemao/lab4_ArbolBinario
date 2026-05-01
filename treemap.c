@@ -64,8 +64,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
             return tree->current->pair;
         }
         else{
-            if (key > tree->current->pair->key)tree->current = tree->current->right;
-            else if (key < tree->current->pair->key)tree->current = tree->current->left;
+            if (tree->lower_than(key, tree->current->pair->key))tree->current = tree->current->left;
+            else tree->current = tree->current->right;
         }
     }
     return NULL;
