@@ -92,3 +92,8 @@ treemap.c:62:46: error: ‘TreeNode’ has no member named ‘key’
    62 |         if (is_equal(tree, key, tree->current->key)){
       |                                              ^~
 83e9c63
+Fri May  1 11:12:05 PM UTC 2026: 
+ treemap.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+ tests:  0|0
+3992246
