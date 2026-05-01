@@ -46,8 +46,8 @@ TreeMap * createTreeMap(int (*lower_than) (void* key1, void* key2)) {
     TreeMap *arbolMap = (TreeMap*) malloc(sizeof(TreeMap));
     if (arbolMap == NULL)return;
 
-    arbolMap->root = key1;
-    arbolMap->current = key1;
+    arbolMap->root = NULL;
+    arbolMap->current =  NULL;
     arbolMap->lower_than = lower_than;
     return arbolMap;
 }
