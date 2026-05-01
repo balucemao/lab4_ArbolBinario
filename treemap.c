@@ -63,8 +63,10 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
         if (is_equal(tree, key, tree->current->pair->key)){
             return tree->current->pair;
         }
-        if (key > tree->current->pair->key)tree->current = tree->current->right;
-        else if (key < tree->current->pair->key)tree->current = tree->current->left;
+        else{
+            if (key > tree->current->pair->key)tree->current = tree->current->right;
+            else if (key < tree->current->pair->key)tree->current = tree->current->left;
+        }
     }
     return NULL;
 }
