@@ -191,6 +191,7 @@ void eraseTreeMap(TreeMap * tree, void* key){
 Pair * firstTreeMap(TreeMap * tree) {
     if (tree == NULL)return NULL;
     TreeNode* node = minimum(tree->root);
+    tree->current = node;
     return node->pair;
 }
 
@@ -210,6 +211,7 @@ Pair * nextTreeMap(TreeMap * tree) {
         actual = padre;
         padre = padre->parent;
     }
+    
     tree->current = padre;
     if (tree->current != NULL) return tree->current->pair;
     return NULL;
