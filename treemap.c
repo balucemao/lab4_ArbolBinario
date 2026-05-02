@@ -77,7 +77,14 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 // Luego crear el nuevo nodo y enlazarlo. Si la clave del dato ya existe retorne sin hacer nada (recuerde que el mapa no permite claves repetidas).
 
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
-   if (tree == NULL || key == NULL)return;
+    if (tree == NULL || key == NULL)return;
+
+    //si es que el arbol esta vacio (raiz nula), se crea simplemente un nodo
+    if (tree->root == NULL){
+        tree->root = createTreeNode(key, value);
+        return;
+    }
+    
     tree->current = tree->root;
     TreeNode *padre = tree->current;
     while(tree->current != NULL){
@@ -134,6 +141,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         else if (node->parent->left == node)node->parent->left = NULL;
         else node->parent->right = NULL;
         
+        free(node->pair);
         free(node);
         return;
     }
@@ -168,7 +176,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         //aqui se revisa que tipo de hijo era el nodo a eliminar de su padre, izquierdo o derecho
         if (node->parent->left == node)node->parent->left = hijo;
         else node->parent->right = hijo;
-        
+
+        free(node->pair);
         free(node);
         
     }
