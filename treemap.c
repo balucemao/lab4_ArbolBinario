@@ -79,6 +79,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key) {
 void insertTreeMap(TreeMap * tree, void* key, void * value) {
    if (tree == NULL || key == NULL || value == NULL)return;
     tree->current = tree->root;
+    TreeNode *padre = tree->current;
     while(tree->current != NULL){
         //se usa el is_equal porque no necesariamente sion numericas, sino seria > o <
         if (is_equal(tree, key, tree->current->pair->key))return;
@@ -88,6 +89,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         }
     }
     tree->current = createTreeNode(key, value); 
+    tree->current->parent = padre;
 }
 
 // 4. Implemente la función TreeNode * minimum(TreeNode * x). 
