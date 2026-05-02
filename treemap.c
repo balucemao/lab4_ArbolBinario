@@ -235,9 +235,14 @@ Pair * upperBound(TreeMap * tree, void* key) {
 
     while(actual != NULL){
         if(is_equal(tree, key, actual->pair->key))return actual->pair;
-        if(tree->lower_than(key, actual->pair->key))ub_node = actual->left;
+        if(tree->lower_than(key, actual->pair->key)){
+            ub_node = actual;
+            actual = actual->left;
+            
+        }
+        else actual = actual->right;
     }
-    return ub_node;
+    return ub_node->pair;
 }
 
 
