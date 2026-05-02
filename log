@@ -458,3 +458,21 @@ treemap.c:152:9: error: ‘hijo’ undeclared (first use in this function)
 treemap.c:152:9: note: each undeclared identifier is reported only once for each function it appears in
 cc1: all warnings being treated as errors
 0c5fdc0
+Sat May  2 01:29:50 AM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:147:23: error: unused variable ‘hijo’ [-Werror=unused-variable]
+  147 |             TreeNode* hijo = node->left;
+      |                       ^~~~
+treemap.c:150:23: error: unused variable ‘hijo’ [-Werror=unused-variable]
+  150 |             TreeNode* hijo = node->right;
+      |                       ^~~~
+treemap.c:152:9: error: ‘hijo’ undeclared (first use in this function)
+  152 |         hijo->parent = node->parent;
+      |         ^~~~
+treemap.c:152:9: note: each undeclared identifier is reported only once for each function it appears in
+cc1: all warnings being treated as errors
+cb3f5a3

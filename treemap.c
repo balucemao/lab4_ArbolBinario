@@ -143,7 +143,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     }
 
     else{
-        if (node->left != NULL){
+        if (actual->left != NULL){
             TreeNode* hijo = node->left;
         }
         else {
