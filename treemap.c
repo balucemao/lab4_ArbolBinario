@@ -242,7 +242,9 @@ Pair * upperBound(TreeMap * tree, void* key) {
         }
         else actual = actual->right;
     }
-    return ub_node->pair;
+    
+    if (ub_node != NULL)return ub_node->pair;
+    return NULL;
 }
 
 
