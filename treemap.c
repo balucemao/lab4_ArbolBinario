@@ -81,6 +81,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     tree->current = tree->root;
     TreeNode *padre = tree->current;
     while(tree->current != NULL){
+        padre = tree->current;
         //se usa el is_equal porque no necesariamente sion numericas, sino seria > o <
         if (is_equal(tree, key, tree->current->pair->key))return;
         else{
