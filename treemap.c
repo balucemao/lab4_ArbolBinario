@@ -139,10 +139,14 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     }
     
     else if(node->left != NULL && node->right != NULL){
+        //nos vcamos a la derecha del nodo a eliminiar
         TreeNode* hijoDerecha = node->right;
+        //con la funcion minimum busco el menor de la subrama del nodo hijoDerecha
         TreeNode* menor = minimum(hijoDerecha);
+        //se inserta la key y el valor del menor nodo al nodo actual
         node->pair->key = menor->pair->key;
         node->pair->value = menor->pair->value;
+        //recursivamente elimino el menor (BUSCAR COMO FUNCIONA MEJOR)
         removeNode(tree, menor);
     }
 
@@ -161,7 +165,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
         //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente al nodo (derecha o izquieda)
         if (hijo != NULL)hijo->parent = node->parent;
-        //aqui se revisa 
+        //aqui se revisa que tipo de hijo era el nodo a eliminar de su padre, izquierdo o derecho
         if (node->parent->left == node)node->parent->left = hijo;
         else node->parent->right = hijo;
         
@@ -172,7 +176,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
 void eraseTreeMap(TreeMap * tree, void* key){
     if (tree == NULL || tree->root == NULL) return;
-
+    
     if (searchTreeMap(tree, key) == NULL) return;
     TreeNode* node = tree->current;
     removeNode(tree, node);
@@ -185,7 +189,8 @@ void eraseTreeMap(TreeMap * tree, void* key){
 // Recuerde actualizar este puntero.
 
 Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
+    if (tree == NULL)return NULL;
+    return tree->root;
 }
 
 Pair * nextTreeMap(TreeMap * tree) {
