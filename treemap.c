@@ -203,6 +203,7 @@ Pair * nextTreeMap(TreeMap * tree) {
         //siguiente es el nodo con la key mas pegueña despues de la actua, osea nos corremos una a la derecha en el arbol
         //y despues con la funcion minimum todo a la izquierda
         TreeNode* siguiente = minimum(actual->right);
+        tree->current = siguiente;
         return siguiente->pair;
     }
 
