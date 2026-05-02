@@ -205,12 +205,13 @@ Pair * nextTreeMap(TreeMap * tree) {
         return siguiente->pair;
     }
 
-    while(actual->parent != NULL){
-        if(actual->parent->right != actual)break;
-        actual = actual->parent;
-        
+    TreeNode* padre = actual->parent;
+    while(padre != NULL && padre->right == actual){
+        actual = padre;
+        padre = padre->parent;
     }
-    return actual->parent->pair;
+    if (padre != NULL) return pardre->pair;
+    return NULL;
     
 }
 
