@@ -398,3 +398,28 @@ Sat May  2 01:00:03 AM UTC 2026:
  tests:  16|4
 total_score: 28/60
 8e5fcd5
+Sat May  2 01:25:53 AM UTC 2026: 
+ treemap.c | 22 ++++++++++------------
+ 1 file changed, 10 insertions(+), 12 deletions(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:139:35: error: ‘hijoDer’ undeclared (first use in this function); did you mean ‘hijoDerecha’?
+  139 |         TreeNode* menor = minimum(hijoDer);
+      |                                   ^~~~~~~
+      |                                   hijoDerecha
+treemap.c:139:35: note: each undeclared identifier is reported only once for each function it appears in
+treemap.c:138:19: error: unused variable ‘hijoDerecha’ [-Werror=unused-variable]
+  138 |         TreeNode* hijoDerecha = actual->right;
+      |                   ^~~~~~~~~~~
+treemap.c:146:32: error: expected expression before ‘TreeNode’
+  146 |         if (node->left != NULL)TreeNode* hijo = node->left;
+      |                                ^~~~~~~~
+treemap.c:147:14: error: expected expression before ‘TreeNode’
+  147 |         else TreeNode* hijo = node->right;
+      |              ^~~~~~~~
+treemap.c:148:9: error: ‘hijo’ undeclared (first use in this function)
+  148 |         hijo->parent = node->parent;
+      |         ^~~~
+cc1: all warnings being treated as errors
+bac4cb6
