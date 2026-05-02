@@ -276,3 +276,43 @@ treemap.c:128:6: note: declared here
       |      ^~~~~~~~~~
 cc1: all warnings being treated as errors
 a51538e
+Sat May  2 12:58:35 AM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:129:45: error: ‘return’ with a value, in function returning void [-Wreturn-mismatch]
+  129 |     if (tree == NULL || node == NULL)return NULL;
+      |                                             ^~~~
+treemap.c:128:6: note: declared here
+  128 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |      ^~~~~~~~~~
+treemap.c:148:9: error: unknown type name ‘treeNode’; did you mean ‘TreeNode’?
+  148 |         treeNode* menor = minimum(hijoDer);
+      |         ^~~~~~~~
+      |         TreeNode
+treemap.c:148:27: error: initialization of ‘int *’ from incompatible pointer type ‘TreeNode *’ [-Wincompatible-pointer-types]
+  148 |         treeNode* menor = minimum(hijoDer);
+      |                           ^~~~~~~
+treemap.c:149:32: error: request for member ‘pair’ in something not a structure or union
+  149 |         node->pair->key = menor->pair->key;
+      |                                ^~
+treemap.c:150:34: error: request for member ‘pair’ in something not a structure or union
+  150 |         node->pair->value = menor->pair->value;
+      |                                  ^~
+treemap.c:151:20: error: passing argument 1 of ‘removeNode’ from incompatible pointer type [-Wincompatible-pointer-types]
+  151 |         removeNode(minimum);
+      |                    ^~~~~~~
+      |                    |
+      |                    TreeNode * (*)(TreeNode *)
+treemap.c:128:27: note: expected ‘TreeMap *’ but argument is of type ‘TreeNode * (*)(TreeNode *)’
+  128 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |                 ~~~~~~~~~~^~~~
+treemap.c:151:9: error: too few arguments to function ‘removeNode’
+  151 |         removeNode(minimum);
+      |         ^~~~~~~~~~
+treemap.c:128:6: note: declared here
+  128 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |      ^~~~~~~~~~
+8411239
