@@ -148,21 +148,22 @@ void removeNode(TreeMap * tree, TreeNode* node) {
 
     else{
         TreeNode* hijo = NULL;
+        //reviso si el arbol desde ese nodo tiene rama hacia la derecha o la iquierda, y se crea un hijo con esa posicion
         if (node->left != NULL) hijo = node->left;
         else hijo = node->right;
         
-        
+        //si el nodo era la raiz entonces el hijo del nodo pasa a ser la nueva raiz
         if (node->parent == NULL){
             tree->root = hijo;
             hijo->parent = NULL;
             return;
         }
-        
-        if (hijo != NULL)hijo->parent = node->parent;
-        
-        if (node->left == node)node->parent->left = hijo;
-        else node->parent->right = hijo;
 
+        //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente al nodo (derecha o izquieda)
+        if (hijo != NULL)hijo->parent = node->parent;
+        //aqui se revisa 
+        if (node->parent->left == node)node->parent->left = hijo;
+        else node->parent->right = hijo;
         
         free(node);
         
