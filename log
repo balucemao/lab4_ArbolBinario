@@ -598,3 +598,16 @@ Sat May  2 02:24:56 AM UTC 2026:
  tests:  20|2
 total_score: 40/60
 ef5cb5c
+Sat May  2 02:33:08 AM UTC 2026: 
+ treemap.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:198:47: error: ‘return’ with no value, in function returning non-void [-Wreturn-mismatch]
+  198 |     if (tree == NULL || tree->current == NULL)return;
+      |                                               ^~~~~~
+treemap.c:197:8: note: declared here
+  197 | Pair * nextTreeMap(TreeMap * tree) {
+      |        ^~~~~~~~~~~
+c21bfca
