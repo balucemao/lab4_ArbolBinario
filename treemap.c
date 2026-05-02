@@ -94,7 +94,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     tree->current->parent = padre;
 
     if (tree->lower_than(tree->current->pair->key, padre->pair->key))tree->current->parent->left = tree->current;
-    if (tree->lower_than(padre->pair->key ,tree->current->pair->key))tree->current->parent->right = tree->current;
+    else tree->current->parent->right = tree->current;
     
 }
 
