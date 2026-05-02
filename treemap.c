@@ -90,7 +90,12 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
         }
     }
     tree->current = createTreeNode(key, value); 
+    //se enlaza el hijo con el padre
     tree->current->parent = padre;
+
+    if (tree->lower_than(tree->current->pair->key, padre->pair->key))tree->current->parent->left = tree->current;
+    if (tree->lower_than(padre->pair->key ,tree->current->pair->key))tree->current->parent->right = tree->current;
+    
 }
 
 // 4. Implemente la función TreeNode * minimum(TreeNode * x). 
