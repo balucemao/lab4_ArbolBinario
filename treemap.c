@@ -190,7 +190,7 @@ void eraseTreeMap(TreeMap * tree, void* key){
 
 Pair * firstTreeMap(TreeMap * tree) {
     if (tree == NULL)return NULL;
-    Pair* node = minimum(tree->root);
+    TreeNode* node = minimum(tree->root);
     return node->pair;
 }
 
