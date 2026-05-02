@@ -198,14 +198,19 @@ Pair * nextTreeMap(TreeMap * tree) {
     if (tree == NULL || tree->current == NULL)return NULL;
     TreeNode* actual = tree->current;
 
-        if (actual->right != NULL){
-            //siguiente es el nodo con la key mas pegueña despues de la actua, osea nos corremos una a la derecha en el arbol
-            //y despues con la funcion minimum todo a la izquierda
-            TreeNode* siguiente = minimum(actual->right);
-            return siguiente->pair;
-        }
+    if (actual->right != NULL){
+        //siguiente es el nodo con la key mas pegueña despues de la actua, osea nos corremos una a la derecha en el arbol
+        //y despues con la funcion minimum todo a la izquierda
+        TreeNode* siguiente = minimum(actual->right);
+        return siguiente->pair;
+    }
+
+    while(actual->parent != NULL){
+        actual = actual->parent;
+        if(actual->parent->right != actual)break;
+    }
+    return actual->pair;
     
-    return NULL;
 }
 
 // 7. La función Pair* upperBound(TreeMap* tree, void* key) retorna el Pair con clave igual a key. 
