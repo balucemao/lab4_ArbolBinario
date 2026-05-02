@@ -92,9 +92,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     tree->current = createTreeNode(key, value); 
     //se enlaza el hijo con el padre
     tree->current->parent = padre;
-
-    if (tree->lower_than(tree->current->pair->key, padre->pair->key))tree->current->parent->left = tree->current;
-    else tree->current->parent->right = tree->current;
+    //aqui se enlaza el padre al hijo, si la clave del hijo es menor, entonces se enlaza al padre por la izquierda
+    if (tree->lower_than(tree->current->pair->key, padre->pair->key))padre->left = tree->current;
+    //sino por la derecha
+    else padre->right = tree->current;
     
 }
 
@@ -104,7 +105,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 // Si x no tiene hijo izquierdo se retorna el mismo nodo.
 
 TreeNode * minimum(TreeNode * x){
-
+    if (x->left)
     return NULL;
 }
 
