@@ -206,10 +206,10 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
 
     while(actual->parent != NULL){
-        if(actual->parent->right != actual)break;
         actual = actual->parent;
+        if(actual->parent->right != actual)break;
     }
-    return actual->pair;
+    return actual->parent->pair;
     
 }
 
