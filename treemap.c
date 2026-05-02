@@ -96,7 +96,9 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
     if (tree->lower_than(tree->current->pair->key, padre->pair->key))padre->left = tree->current;
     //sino por la derecha
     else padre->right = tree->current;
-    
+    //SIRVE PADRE-> PORQUE AL SER PUNTEROS SIMPLEMENTE SE REESCRIBEN LAS DIRECCIONES, PERO AUN APUNTAN A LO MISMO
+    //padre-> = tree->current->parent->
+    //actual = tree->current /si es que lo hubiera hecho
 }
 
 // 4. Implemente la función TreeNode * minimum(TreeNode * x). 
@@ -105,8 +107,14 @@ void insertTreeMap(TreeMap * tree, void* key, void * value) {
 // Si x no tiene hijo izquierdo se retorna el mismo nodo.
 
 TreeNode * minimum(TreeNode * x){
-    //if (x->left);
-    return NULL;
+    if (x == NULL)return NULL;
+    if (x->left == NULL)return x;
+    TreeNode *siguiente = x->left;
+    while(siguiente != NULL){
+        siguiente = siguiente->left;
+    }
+    
+    return siguiente;
 }
 
 // 5.- Implemente la función void removeNode(TreeMap * tree, TreeNode* node). 
