@@ -423,3 +423,20 @@ treemap.c:148:9: error: ‘hijo’ undeclared (first use in this function)
       |         ^~~~
 cc1: all warnings being treated as errors
 bac4cb6
+Sat May  2 01:26:14 AM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:146:32: error: expected expression before ‘TreeNode’
+  146 |         if (node->left != NULL)TreeNode* hijo = node->left;
+      |                                ^~~~~~~~
+treemap.c:147:14: error: expected expression before ‘TreeNode’
+  147 |         else TreeNode* hijo = node->right;
+      |              ^~~~~~~~
+treemap.c:148:9: error: ‘hijo’ undeclared (first use in this function)
+  148 |         hijo->parent = node->parent;
+      |         ^~~~
+treemap.c:148:9: note: each undeclared identifier is reported only once for each function it appears in
+aa31331
