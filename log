@@ -575,3 +575,20 @@ Sat May  2 02:21:18 AM UTC 2026:
  tests:  19|3
 total_score: 35/60
 adced05
+Sat May  2 02:24:34 AM UTC 2026: 
+ treemap.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘firstTreeMap’:
+treemap.c:193:18: error: initialization of ‘Pair *’ from incompatible pointer type ‘TreeNode *’ [-Wincompatible-pointer-types]
+  193 |     Pair* node = minimum(tree->root);
+      |                  ^~~~~~~
+treemap.c:194:16: error: ‘Pair’ has no member named ‘pair’
+  194 |     return node->pair;
+      |                ^~
+treemap.c:195:1: error: control reaches end of non-void function [-Werror=return-type]
+  195 | }
+      | ^
+cc1: all warnings being treated as errors
+66e25ba
