@@ -208,12 +208,16 @@ Pair * nextTreeMap(TreeMap * tree) {
     }
 
     TreeNode* padre = actual->parent;
+    //aqui debo pensar que va subiendo desde abajo a arriba a la izquierda, osea hacia el padre del anterior
+    //subire hasta que el hijo del padre por la izquieda sea igual al nodo original, osea cuando el hijo sea menor al padre por primera vez
+    //pensar que si bajo desde el ancestro (arriba), si en un momento voy a la izquierda significa que es menor
     while(padre != NULL && padre->right == actual){
         actual = padre;
         padre = padre->parent;
     }
     
     tree->current = padre;
+    //aqui reviso si es que al salir del bucle, sali porque no encontre uno sigueinte al mio, o porque si lo encontre. si no se encuentra retorno NULL
     if (tree->current != NULL) return tree->current->pair;
     return NULL;
     
@@ -225,6 +229,14 @@ Pair * nextTreeMap(TreeMap * tree) {
 // Finalmente retorne el par del nodo ub_node.
 
 Pair * upperBound(TreeMap * tree, void* key) {
+    if (tree == NULL || key == NULL)return NULL;
+    TreeNode* actual = tree->root;
+    TreeNode* ub_node = actual;
+
+    while(actual != NULL){
+        if(is_equal(tree, key, actual->pair->key))return actual->pair;
+        if(tree->lower_than(key, actual->pair->key))ub_node = actual->left;
+    }
     return NULL;
 }
 
