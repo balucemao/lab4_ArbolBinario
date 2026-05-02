@@ -116,7 +116,7 @@ TreeNode * minimum(TreeNode * x){
         actual = actual->left;
     }
     
-    return actual;
+    return siguiente->parent;
 }
 
 // 5.- Implemente la función void removeNode(TreeMap * tree, TreeNode* node). 
