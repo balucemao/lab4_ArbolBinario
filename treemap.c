@@ -234,12 +234,19 @@ Pair * upperBound(TreeMap * tree, void* key) {
     TreeNode* ub_node = NULL;
 
     while(actual != NULL){
+
+        //aqui primero reviso si encuentro la clave efectivamente en mi treeMap, si esta retorno el pair asociado al nodo en que esta
         if(is_equal(tree, key, actual->pair->key))return actual->pair;
+        
+        //sino comparo con lower_Than, si la clave que busco es menor a la del nodo actual de mi arbol, entonces ese nodo es candidato a tener la menor 
+        //mayor o igual a key
+        //despues uso actual = actual->left para ir a un nodo con key menor
         if(tree->lower_than(key, actual->pair->key)){
             ub_node = actual;
             actual = actual->left;
             
         }
+        //si la clave buscada es mayor a la del nodo actual, solo actualzio actual
         else actual = actual->right;
     }
     
