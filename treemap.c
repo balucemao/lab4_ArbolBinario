@@ -231,13 +231,13 @@ Pair * nextTreeMap(TreeMap * tree) {
 Pair * upperBound(TreeMap * tree, void* key) {
     if (tree == NULL || key == NULL)return NULL;
     TreeNode* actual = tree->root;
-    TreeNode* ub_node = actual;
+    TreeNode* ub_node = NULL;
 
     while(actual != NULL){
         if(is_equal(tree, key, actual->pair->key))return actual->pair;
         if(tree->lower_than(key, actual->pair->key))ub_node = actual->left;
     }
-    return NULL;
+    return ub_node;
 }
 
 
