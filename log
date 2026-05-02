@@ -350,3 +350,24 @@ treemap.c:128:6: note: declared here
   128 | void removeNode(TreeMap * tree, TreeNode* node) {
       |      ^~~~~~~~~~
 22d3a11
+Sat May  2 12:59:08 AM UTC 2026: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:151:20: error: passing argument 1 of ‘removeNode’ from incompatible pointer type [-Wincompatible-pointer-types]
+  151 |         removeNode(minimum);
+      |                    ^~~~~~~
+      |                    |
+      |                    TreeNode * (*)(TreeNode *)
+treemap.c:128:27: note: expected ‘TreeMap *’ but argument is of type ‘TreeNode * (*)(TreeNode *)’
+  128 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |                 ~~~~~~~~~~^~~~
+treemap.c:151:9: error: too few arguments to function ‘removeNode’
+  151 |         removeNode(minimum);
+      |         ^~~~~~~~~~
+treemap.c:128:6: note: declared here
+  128 | void removeNode(TreeMap * tree, TreeNode* node) {
+      |      ^~~~~~~~~~
+63312d1
