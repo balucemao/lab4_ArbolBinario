@@ -476,3 +476,18 @@ treemap.c:152:9: error: ‘hijo’ undeclared (first use in this function)
 treemap.c:152:9: note: each undeclared identifier is reported only once for each function it appears in
 cc1: all warnings being treated as errors
 cb3f5a3
+Sat May  2 01:47:18 AM UTC 2026: 
+ treemap.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+Compilation failed
+In file included from test.c:4:
+treemap.c:142:5: error: expected identifier or ‘(’ before ‘else’
+  142 |     else if(actual->left != NULL && actual->right != NULL){
+      |     ^~~~
+treemap.c:150:5: error: expected identifier or ‘(’ before ‘else’
+  150 |     else{
+      |     ^~~~
+treemap.c:161:1: error: expected identifier or ‘(’ before ‘}’ token
+  161 | }
+      | ^
+00ab1b8
