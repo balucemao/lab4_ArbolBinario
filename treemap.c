@@ -135,7 +135,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             return;
         }
         actual->parent->left = NULL;
-        actual->parent->right = NULL;}
+        actual->parent->right = NULL;
         actual = actual->parent;
     }
     
