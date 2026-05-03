@@ -171,7 +171,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             return;
         }
 
-        //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente al nodo (derecha o izquieda)
+        //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente a nodo (derecha o izquieda)
         //if (hijo != NULL)hijo->parent = node->parent;
         hijo->parent = node->parent;
         //aqui se revisa que tipo de hijo era el nodo a eliminar de su padre, izquierdo o derecho
@@ -210,7 +210,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     TreeNode* actual = tree->current;
 
     if (actual->right != NULL){
-        //siguiente es el nodo con la key mas pegueña despues de la actua, osea nos corremos una a la derecha en el arbol
+        //siguiente es el nodo con la key mas peguena despues de la actua, osea nos corremos una a la derecha en el arbol
         //y despues con la funcion minimum todo a la izquierda
         TreeNode* siguiente = minimum(actual->right);
         tree->current = siguiente;
