@@ -172,7 +172,8 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         }
 
         //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente al nodo (derecha o izquieda)
-        if (hijo != NULL)hijo->parent = node->parent;
+        //if (hijo != NULL)hijo->parent = node->parent;
+        hijo->parent = node->parent;
         //aqui se revisa que tipo de hijo era el nodo a eliminar de su padre, izquierdo o derecho
         if (node->parent->left == node)node->parent->left = hijo;
         else node->parent->right = hijo;
