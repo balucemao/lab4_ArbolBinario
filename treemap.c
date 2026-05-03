@@ -134,7 +134,7 @@ TreeNode * minimum(TreeNode * x){
 
 void removeNode(TreeMap * tree, TreeNode* node) {
     if (tree == NULL || node == NULL)return;
-    
+    //si no tiene hijos
     if (node->left == NULL && node->right == NULL){
         if (node->parent == NULL) tree->root = NULL;
             
@@ -145,7 +145,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         free(node);
         return;
     }
-    
+    //si tiene 2 hijos
     else if(node->left != NULL && node->right != NULL){
         //nos vcamos a la derecha del nodo a eliminiar
         TreeNode* hijoDerecha = node->right;
@@ -157,7 +157,7 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         //recursivamente elimino el menor (BUSCAR COMO FUNCIONA MEJOR)
         removeNode(tree, menor);
     }
-
+    //tiene solo 1 hijo
     else{
         TreeNode* hijo = NULL;
         //reviso si el arbol desde ese nodo tiene rama hacia la derecha o la iquierda, y se crea un hijo con esa posicion
