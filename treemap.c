@@ -136,11 +136,12 @@ void removeNode(TreeMap * tree, TreeNode* node) {
     if (tree == NULL || node == NULL)return;
     //si no tiene hijos
     if (node->left == NULL && node->right == NULL){
+        //si es la raiz simplemente se elimina
         if (node->parent == NULL) tree->root = NULL;
-            
+        //si es un nodo final, se revisa si el nodo a eliminar es hijo izquierdo o derecho, lo "eliminamos" haciendo que su padre apunte a null en la antigua direccion
         else if (node->parent->left == node)node->parent->left = NULL;
         else node->parent->right = NULL;
-        
+        //se libera su par asociado y despues el nodo
         free(node->pair);
         free(node);
         return;
@@ -151,10 +152,10 @@ void removeNode(TreeMap * tree, TreeNode* node) {
         TreeNode* hijoDerecha = node->right;
         //con la funcion minimum busco el menor de la subrama del nodo hijoDerecha
         TreeNode* menor = minimum(hijoDerecha);
-        //se inserta la key y el valor del menor nodo al nodo actual
+        //el nodo a eliminar se actualiza con los datos del nodo menor del subarbol derecho al original
         node->pair->key = menor->pair->key;
         node->pair->value = menor->pair->value;
-        //recursivamente elimino el menor (BUSCAR COMO FUNCIONA MEJOR)
+        //recursivamente elimino el menor
         removeNode(tree, menor);
     }
     //tiene solo 1 hijo
@@ -171,13 +172,13 @@ void removeNode(TreeMap * tree, TreeNode* node) {
             return;
         }
 
-        //porciacaso verifico si el hijo existe, aqui el padre del nodo para a ser padre del hijo del nodo, osea el anterior a nodo apunta al siguiente a nodo (derecha o izquieda)
-        //if (hijo != NULL)hijo->parent = node->parent;
-        hijo->parent = node->parent;
-        //aqui se revisa que tipo de hijo era el nodo a eliminar de su padre, izquierdo o derecho
+        //porciacaso verifico si el hijo existe, aqui conecto el hijo del nodo a eliminar al padre del nodo a eliminar
+        if (hijo != NULL)hijo->parent = node->parent;
+        //aqui se revisa si el nodo a eliminar era hijo izquierdo o derecho, y finalmente se conecta el padre del nodo a eliminar al hijo, para conectar comppletamente el abuelo y el
+        //"nieto"
         if (node->parent->left == node)node->parent->left = hijo;
         else node->parent->right = hijo;
-
+        //se libera el nodo y su par asociado
         free(node->pair);
         free(node);
         
@@ -212,6 +213,7 @@ Pair * nextTreeMap(TreeMap * tree) {
     if (actual->right != NULL){
         //siguiente es el nodo con la key mas peguena despues de la actua, osea nos corremos una a la derecha en el arbol
         //y despues con la funcion minimum todo a la izquierda
+        //asi obtenemos el menor numero mayor al que queremos
         TreeNode* siguiente = minimum(actual->right);
         tree->current = siguiente;
         return siguiente->pair;
@@ -219,8 +221,8 @@ Pair * nextTreeMap(TreeMap * tree) {
 
     TreeNode* padre = actual->parent;
     //aqui debo pensar que va subiendo desde abajo a arriba a la izquierda, osea hacia el padre del anterior
-    //subire hasta que el hijo del padre por la izquieda sea igual al nodo original, osea cuando el hijo sea menor al padre por primera vez
-    //pensar que si bajo desde el ancestro (arriba), si en un momento voy a la izquierda significa que es menor
+    //subire hasta que el hijo del padre por la derecha sea igual al nodo original, osea hasta que el hijo (actual) sea menor al padre por primera vez
+    //pensar que si subo desde el actual (abajo), si en un momento voy a la derecha significa que es menor, pues sera hijo izquierdo del padre
     while(padre != NULL && padre->right == actual){
         actual = padre;
         padre = padre->parent;
